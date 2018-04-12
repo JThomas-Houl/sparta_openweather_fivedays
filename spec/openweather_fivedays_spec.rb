@@ -7,6 +7,8 @@ describe 'Open weather forcast' do
         @dayforcast_3hrs = WeatherForcast.new
          
         @city_id_result = @dayforcast_3hrs.get_weather_by_cityid(384848)
+        @city_id_array = @city_id_result['list']
+        @city_id_main = @city_id_result['list'][1]
         
     end 
 
@@ -15,12 +17,16 @@ describe 'Open weather forcast' do
         
     end 
 
-    it 'should give you 5 days forcast 3 hrs' do
-        pending
+    it 'should give you 5 days forcast 3 hrs' do #
+        expect(@city_id_array.count).to eq 40 #all the 3 hours intivals of the day
+        expect(@city_id_result.keys.count).to eq 5 #all 5 days 
+        
     end
 
     it 'should return city as a hash' do
-        pending
+        expect(@city_id_result['city']['name']).not_to be_empty
+        expect(@city_id_result['city']).to be_a(Hash)
+
     end
 
     it 'should return a vaild city name' do 
@@ -32,15 +38,14 @@ describe 'Open weather forcast' do
     end
 
     it 'should have a list array' do
-        pending
+        expect(@city_id_array).to be_a(Array)
     end
 
-    it 'should have a  main hash' do
-        pending
-
+    it 'should have a main hash' do
+        expect(@city_id_array[1]).to be_a(Hash)
     end
+
     it 'should return temp' do
-        pending
 
     end
     it 'should return temp_min' do
@@ -52,7 +57,8 @@ describe 'Open weather forcast' do
 
     end
     it 'should return temp as float' do
-        pending
+        expect(@city_id_main['main']['temp']).to be_a(Float)
+        
 
     end
     it 'should return temp_min as float' do
