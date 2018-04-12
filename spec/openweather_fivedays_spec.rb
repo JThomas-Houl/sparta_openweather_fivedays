@@ -46,6 +46,7 @@ describe 'Open weather forcast' do
     end
 
     it 'should return temp' do
+        pending
 
     end
     it 'should return temp_min' do
@@ -62,40 +63,39 @@ describe 'Open weather forcast' do
 
     end
     it 'should return temp_min as float' do
-        pending
+        expect(@city_id_main['main']['temp_min']).to be_a(Float)
+        
 
     end
     it 'should return temp_max as float' do
-        pending
+        expect(@city_id_main['main']['temp_max']).to be_a(Float)
 
     end
     it 'should return humidity as an integer' do
-        pending
-
+        expect(@city_id_main['main']['humidity']).to be_a(Integer)
+    
     end
     it 'should return weather as an array' do
-        pending
-
+        expect(@city_id_array[1]['weather']).to be_a(Array)
     end
-    it 'should return weather as an array' do
-        pending
-
-    end
+    
     it 'should have main in the weather hash which contains a string' do
-        pending
-
+        expect(@city_id_array[1]['weather'][0]).to be_a(Hash)
+        expect(@city_id_array[1]['weather'][0]['main']).to be_a(String)
+   
     end
     it 'should have description in the weather hash which contains a string' do
-        pending
-
+        expect(@city_id_array[1]['weather'][0]['description']).to be_a(String)
+        
     end
     it 'should have wind speed as a float' do
-        pending
+        expect(@city_id_array[1]['wind']['speed']).to be_a(Float)
 
     end
     it 'should have wind degree as a float' do
-        pending
-
+        expect(@city_id_array[1]['wind']['deg']).to be_a(Float)
+        
+        
     end
     
     
