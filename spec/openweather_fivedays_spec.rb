@@ -1,10 +1,18 @@
 require 'spec_helper'
 require 'httparty'
+require 'openweather_fivedays'
 
 describe 'Open weather forcast' do 
+    before(:all) do
+        @dayforcast_3hrs = WeatherForcast.new
+         
+        @city_id_result = @dayforcast_3hrs.get_weather_by_cityid(384848)
+        
+    end 
 
     it 'should return a status code of 200' do
-        pending
+        expect(@city_id_result['cod']).to eq '200'
+        
     end 
 
     it 'should give you 5 days forcast 3 hrs' do
